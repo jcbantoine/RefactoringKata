@@ -49,6 +49,12 @@
     <Compile Include="Wallets\WalletService.cs" />
     <Compile Include="Wallets\Wallet.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WalletKata.Interop\WalletKata.Interop.csproj">
+      <Project>{5046f85e-5852-42ad-9268-ae7df807386c}</Project>
+      <Name>WalletKata.Interop</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

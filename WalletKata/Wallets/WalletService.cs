@@ -1,20 +1,30 @@
 using System.Collections.Generic;
-using WalletKata.Users;
 using WalletKata.Exceptions;
+using WalletKata.Interop.Users;
+using WalletKata.Interop.Wallets;
 
 namespace WalletKata.Wallets
 {
     public class WalletService
     {
-        public List<Wallet> GetWalletsByUser(User user)
+        protected IUserSession _userSession;
+        protected IWalletDAO _walletDAO;
+
+        public WalletService(IUserSession userSession, IWalletDAO walletDAO)
         {
-            List<Wallet> walletList = new List<Wallet>();
-            User loggedUser = UserSession.GetInstance().GetLoggedUser();
+            _userSession = userSession;
+            _walletDAO = walletDAO;
+        }
+
+        public List<IWallet> GetWalletsByUser(IUser user)
+        {
+            var walletList = new List<IWallet>();
+            var loggedUser = _userSession.GetInstance().GetLoggedUser();
             bool isFriend = false;
 
             if (loggedUser != null)
             {
-                foreach (User friend in user.GetFriends())
+                foreach (IUser friend in user.GetFriends())
                 {
                     if (friend.Equals(loggedUser))
                     {
@@ -25,7 +35,7 @@ namespace WalletKata.Wallets
 
                 if (isFriend)
                 {
-                    walletList = WalletDAO.FindWalletsByUser(user);
+                    walletList = _walletDAO.FindWalletsByUser(user);
                 }
 
                 return walletList;

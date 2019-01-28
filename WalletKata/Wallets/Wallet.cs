@@ -1,6 +1,8 @@
-﻿namespace WalletKata.Wallets
+﻿using WalletKata.Interop.Wallets;
+
+namespace WalletKata.Wallets
 {
-    public class Wallet
+    public class Wallet : IWallet
     {
     }
 }

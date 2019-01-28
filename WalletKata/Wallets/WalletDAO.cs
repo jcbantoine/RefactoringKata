@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using WalletKata.Exceptions;
-using WalletKata.Users;
+using WalletKata.Interop.Users;
+using WalletKata.Interop.Wallets;
 
 namespace WalletKata.Wallets
 {
-    public class WalletDAO
+    public class WalletDAO : IWalletDAO
     {
-        public static List<Wallet> FindWalletsByUser(User user)
+        public List<IWallet> FindWalletsByUser(IUser user)
         {
             throw new ThisIsAStubException("WalletDAO.FindWalletsByUser() should not be called in an unit test");
         }
