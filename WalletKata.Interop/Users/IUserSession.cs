@@ -2,7 +2,6 @@
 {
     public interface IUserSession
     {
-        IUserSession GetInstance();
         IUser GetLoggedUser();
     }
 }

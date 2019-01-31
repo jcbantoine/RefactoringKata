@@ -20,11 +20,6 @@ namespace WalletKata.Tests.Utils
             {
                 var userSessionMoq = new Mock<IUserSession>();
                 userSessionMoq
-                    .Setup(u => u.GetInstance())
-                    .Returns(userSessionMoq.Object)
-                    .Verifiable();
-
-                userSessionMoq
                     .Setup(u => u.GetLoggedUser())
                     .Returns(loggedUser)
                     .Verifiable();

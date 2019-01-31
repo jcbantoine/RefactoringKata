@@ -20,7 +20,7 @@ namespace WalletKata.Wallets
         public List<IWallet> GetWalletsByUser(IUser user)
         {
             var walletList = new List<IWallet>();
-            var loggedUser = _userSession.GetInstance().GetLoggedUser();
+            var loggedUser = _userSession.GetLoggedUser();
             bool isFriend = false;
 
             if (loggedUser != null)

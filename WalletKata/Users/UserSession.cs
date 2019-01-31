@@ -5,14 +5,9 @@ namespace WalletKata.Users
 {
     public class UserSession : IUserSession
     {
-        private readonly UserSession userSession = new UserSession();
+        private readonly IUserSession userSession = new UserSession();
 
         private UserSession() { }
-
-        public IUserSession GetInstance()
-        {
-            return userSession;
-        }
 
         public IUser GetLoggedUser()
         {
