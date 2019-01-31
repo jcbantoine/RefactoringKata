@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using WalletKata.Exceptions;
 using WalletKata.Interop.Users;
 using WalletKata.Interop.Wallets;
@@ -24,19 +25,10 @@ namespace WalletKata.Wallets
 
             if (loggedUser != null)
             {
-                foreach (IUser friend in user.GetFriends())
-                {
-                    if (friend.Equals(loggedUser))
-                    {
-                        isFriend = true;
-                        break;
-                    }
-                }
-
+                isFriend = user.GetFriends().Any(u => u.Equals(loggedUser));
+                
                 if (isFriend)
-                {
                     walletList = _walletDAO.FindWalletsByUser(user);
-                }
 
                 return walletList;
             }
